@@ -3,31 +3,25 @@ import { Post, GroupedTreeNodes, TreeSortKey } from "../types";
 import { buildTree } from "../utils/buildTree";
 import "./TreeView.css";
 import Tree from "../components/Tree/Tree";
+import Dropdown from "../components/Dropdown/Dropdown";
 import useFetchPosts from "../hooks/useFetchPosts";
 
 function TreeView() {
-  const [selectedSort, setSelectedSort] = useState("location");
+  const [selectedGroup, setSelectedGroup] = useState<string>("location");
 
   const { posts, isLoading, error } = useFetchPosts();
-  const groupedPosts = buildTree(posts, selectedSort);
+  const groupedPosts = buildTree(posts, selectedGroup);
   console.log("groupedPosts", groupedPosts);
 
   return (
-    <div className="posts-tree-view">
-      <div>Group By:</div>
-      <button>Location</button>
-      <button>Author</button>
-      <button>Week</button>
-      <div>Posts Tree View</div>
-
+    <div className="tree-view">
+      <Dropdown
+        selectedGroup={selectedGroup}
+        setSelectedGroup={setSelectedGroup}
+      />
       <div className="groups-container">
         {groupedPosts.map((group) => {
-          return (
-            <>
-              <div>{group.label}</div>
-              <Tree treeData={group.children} />
-            </>
-          );
+          return <Tree label={group.label} treeData={group.children} />;
         })}
       </div>
     </div>

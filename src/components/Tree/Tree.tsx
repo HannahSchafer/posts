@@ -1,16 +1,26 @@
+import { useState } from "react";
 import TreeNode from "../TreeNode/TreeNode";
-// import "./PostsTreeView.css";
+import "./Tree.css";
 
-function Tree({ treeData }: any) {
+function Tree({ treeData, label }: any) {
+  const [isOpen, setIsOpen] = useState(false);
   if (!treeData) {
     return null;
   }
+
+  const toggleNode = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <ul>
+    <div className="tree-container">
+      <div onClick={toggleNode}>
+        {isOpen ? "-" : "+"} {label}
+      </div>
       {treeData.map((node: any) => (
-        <TreeNode node={node} key={node.id} />
+        <TreeNode node={node} isOpen={isOpen} key={node.id} />
       ))}
-    </ul>
+    </div>
   );
 }
 

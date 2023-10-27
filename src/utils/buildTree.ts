@@ -1,4 +1,4 @@
-import { Post, TreeNode, GroupedTreeNodes, TreeSortKey } from "../types";
+import { Post, GroupedTreeNodes, TreeSortKey } from "../types";
 
 export const buildTree = (arr: Post[], key: string) => {
   const treeNodes: GroupedTreeNodes = {};

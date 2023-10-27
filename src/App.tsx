@@ -4,7 +4,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <div>React Tree View</div>
+      <div>Posts Tree</div>
       <TreeView />
     </div>
   );
