@@ -17,9 +17,11 @@ function Tree({ treeData, label }: any) {
       <div onClick={toggleNode}>
         {isOpen ? "-" : "+"} {label}
       </div>
-      {treeData.map((node: any) => (
-        <TreeNode node={node} isOpen={isOpen} key={node.id} />
-      ))}
+      <div className="tree-nodes-container">
+        {treeData.map((node: any) => (
+          <TreeNode node={node} isOpen={isOpen} key={node.id} />
+        ))}
+      </div>
     </div>
   );
 }
