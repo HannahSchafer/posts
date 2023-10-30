@@ -3,8 +3,7 @@ import { Post, GroupedTreeNodes, TreeSortKey } from "../types";
 import { buildTree } from "../utils/buildTree";
 import "./TreeView.css";
 import Tree from "../components/Tree/Tree";
-import Dropdown from "../components/Dropdown/Dropdown";
-import Dropdown2 from "../components/Dropdown/Dropdown2";
+import Tabs from "../components/Tabs/Tabs";
 import useFetchPosts from "../hooks/useFetchPosts";
 
 function TreeView() {
@@ -12,15 +11,10 @@ function TreeView() {
 
   const { posts, isLoading, error } = useFetchPosts();
   const groupedPosts = buildTree(posts, selectedGroup);
-  console.log("groupedPosts", groupedPosts);
 
   return (
     <div className="tree-view">
-      <Dropdown2
-        selectedGroup={selectedGroup}
-        setSelectedGroup={setSelectedGroup}
-      />
-
+      <Tabs selectedGroup={selectedGroup} setSelectedGroup={setSelectedGroup} />
       <div className="accordion">
         {groupedPosts.map((group, index) => (
           <div key={index}>

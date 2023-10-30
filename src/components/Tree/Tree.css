@@ -9,8 +9,8 @@
 }
 
 .accordion {
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 4px; */
 }
 
 .accordion-button {
@@ -21,16 +21,23 @@
   border-bottom: 1px solid #ccc;
   text-align: left;
   outline: none;
-  font-size: 16px;
+  font-size: 14px;
   transition: background-color 0.2s;
+  background-color: #f3dfff;
 }
 
+/* .accordian-button:first-child {
+  border-radius: 10px;
+}
 .accordion-button:last-child {
   border-bottom: none;
-}
+  border-radius: 10px;
+} */
 
 .accordion-button:hover {
-  background-color: #f1f1f1;
+  color: white;
+
+  background-color: #9236cd;
 }
 
 .accordion-content {

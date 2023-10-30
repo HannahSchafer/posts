@@ -1,0 +1,22 @@
+.tabs-wrapper {
+  display: flex;
+  font-size: 14px;
+  gap: 40px;
+  margin-bottom: 10px;
+  align-items: center;
+  /* padding: 10px 0; */
+}
+
+.tab {
+  padding: 10px;
+}
+
+.tab.selected {
+  border-bottom: 3px solid #9236cd;
+}
+
+.tab:hover {
+  /* border-bottom: 1px solid #9236cd; */
+  cursor: pointer;
+  background-color: #f3dfff;
+}
