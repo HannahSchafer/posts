@@ -11,6 +11,7 @@ function TreeView() {
 
   const { posts, isLoading, error } = useFetchPosts();
   const groupedPosts = buildTree(posts, selectedGroup);
+  console.log("groupedPosts", groupedPosts);
 
   return (
     <div className="tree-view">
