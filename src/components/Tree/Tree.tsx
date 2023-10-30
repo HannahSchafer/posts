@@ -1,8 +1,14 @@
 import { useState } from "react";
 import TreeNode from "../TreeNode/TreeNode";
+import { Post, TreeSortKey } from "../../types";
 import "./Tree.css";
 
-function Tree({ treeData, label }: any) {
+interface TreeProps {
+  treeData: Post[];
+  label: TreeSortKey;
+}
+
+function Tree({ treeData, label }: TreeProps) {
   const [isOpen, setIsOpen] = useState(false);
   if (!treeData) {
     return null;
@@ -23,7 +29,7 @@ function Tree({ treeData, label }: any) {
         {label}
       </button>
       <div className={`accordion-content ${isOpen ? "active" : ""}`}>
-        {treeData.map((node: any) => (
+        {treeData.map((node: Post) => (
           <TreeNode node={node} key={node.id} />
         ))}
       </div>

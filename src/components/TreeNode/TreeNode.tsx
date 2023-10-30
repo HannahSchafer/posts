@@ -1,12 +1,15 @@
 import { useState } from "react";
-import Tree from "../Tree/Tree";
-import "./TreeNode.css";
 import moment from "moment";
+import { Post } from "../../types";
+import "./TreeNode.css";
 
-function TreeNode({ node, isOpen }: any) {
-  const { children, location, author, time, text } = node;
+interface TreeNode {
+  node: Post;
+}
+
+function TreeNode({ node }: TreeNode) {
+  const { location, author, time, text } = node;
   let dateString = moment.unix(time).format("LL");
-  console.log("dateString", dateString);
 
   const [showChildren, setShowChildren] = useState(false);
 
@@ -25,9 +28,6 @@ function TreeNode({ node, isOpen }: any) {
         </div>
         <div>{text}</div>
       </div>
-      <ul style={{ paddingLeft: "10px", borderLeft: "1px solid black" }}>
-        {showChildren && <Tree treeData={children} />}
-      </ul>
     </div>
   );
 }

@@ -1,8 +1,12 @@
-import { useState } from "react";
 import { GROUP_BY_OPTS } from "../../constants";
 import "./Tabs.css";
 
-function Tabs({ selectedGroup, setSelectedGroup }: any) {
+interface TabsProps {
+  selectedGroup: string;
+  setSelectedGroup: (group: string) => void;
+}
+
+function Tabs({ selectedGroup, setSelectedGroup }: TabsProps) {
   const handleSelect = (selectedOpt: any) => {
     setSelectedGroup(selectedOpt);
   };

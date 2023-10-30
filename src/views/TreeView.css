@@ -1,6 +1,6 @@
 .tree-view {
+  margin: 0 auto;
+  max-width: 400px;
   padding: 20px;
   text-align: left;
-  max-width: 400px;
-  margin: 0 auto;
 }
