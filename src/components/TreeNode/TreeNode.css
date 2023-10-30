@@ -5,10 +5,10 @@
 .tree-node-post {
   border: 1px solid lightgray;
   border-radius: 10px;
-  padding: 10px;
-  max-width: 200px;
-  height: 80px;
   font-size: 12px;
+  height: 80px;
+  margin: 10px;
+  padding: 10px;
   text-align: left;
 }
 
@@ -18,7 +18,10 @@
 }
 
 .tree-node-post-header {
+  padding-bottom: 8px;
+}
+
+.tree-node-post-subheader {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 8px;
 }

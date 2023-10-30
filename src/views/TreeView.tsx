@@ -4,6 +4,7 @@ import { buildTree } from "../utils/buildTree";
 import "./TreeView.css";
 import Tree from "../components/Tree/Tree";
 import Dropdown from "../components/Dropdown/Dropdown";
+import Dropdown2 from "../components/Dropdown/Dropdown2";
 import useFetchPosts from "../hooks/useFetchPosts";
 
 function TreeView() {
@@ -15,14 +16,17 @@ function TreeView() {
 
   return (
     <div className="tree-view">
-      <Dropdown
+      <Dropdown2
         selectedGroup={selectedGroup}
         setSelectedGroup={setSelectedGroup}
       />
-      <div className="groups-container">
-        {groupedPosts.map((group) => {
-          return <Tree label={group.label} treeData={group.children} />;
-        })}
+
+      <div className="accordion">
+        {groupedPosts.map((group, index) => (
+          <div key={index}>
+            <Tree label={group.label} treeData={group.children} />
+          </div>
+        ))}
       </div>
     </div>
   );

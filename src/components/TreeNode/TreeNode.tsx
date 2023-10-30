@@ -15,15 +15,16 @@ function TreeNode({ node, isOpen }: any) {
   };
   return (
     <div className="tree-node-container">
-      {isOpen && (
-        <div className="tree-node-post">
-          <div className="tree-node-post-header">
-            <div>{author}</div>
+      <div className="tree-node-post">
+        <div className="tree-node-post-header">
+          <div className="tree-node-post-subheader">
             <div>{dateString}</div>
+            <div>{author}</div>
           </div>
-          <div>{text}</div>
+          <div>{location}</div>
         </div>
-      )}
+        <div>{text}</div>
+      </div>
       <ul style={{ paddingLeft: "10px", borderLeft: "1px solid black" }}>
         {showChildren && <Tree treeData={children} />}
       </ul>

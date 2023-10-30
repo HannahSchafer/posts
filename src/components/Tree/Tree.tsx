@@ -14,12 +14,17 @@ function Tree({ treeData, label }: any) {
 
   return (
     <div className="tree-container">
-      <div onClick={toggleNode}>
-        {isOpen ? "-" : "+"} {label}
-      </div>
-      <div className="tree-nodes-container">
+      <button
+        className="accordion-button"
+        onClick={() => {
+          toggleNode();
+        }}
+      >
+        {label}
+      </button>
+      <div className={`accordion-content ${isOpen ? "active" : ""}`}>
         {treeData.map((node: any) => (
-          <TreeNode node={node} isOpen={isOpen} key={node.id} />
+          <TreeNode node={node} key={node.id} />
         ))}
       </div>
     </div>

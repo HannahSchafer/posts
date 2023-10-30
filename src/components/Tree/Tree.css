@@ -4,5 +4,44 @@
 }
 
 .tree-nodes-container {
-  /* padding: 20px 0; */
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+.accordion {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.accordion-button {
+  width: 100%;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  transition: background-color 0.2s;
+}
+
+.accordion-button:last-child {
+  border-bottom: none;
+}
+
+.accordion-button:hover {
+  background-color: #f1f1f1;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: auto;
+  transition: max-height 0.2s ease-out;
+  background-color: #f9f9f9;
+  padding: 0;
+}
+
+.accordion-content.active {
+  max-height: 300px; /* Adjust based on the content height */
+  /* padding: 15px 15px 0 15px; */
 }

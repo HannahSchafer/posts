@@ -1,7 +1,7 @@
 .tree-view {
-  display: flex;
-  justify-content: center;
   padding: 20px;
-  gap: 100px;
   text-align: left;
+  max-width: 400px;
+  border: 1px solid magenta;
+  margin: 0 auto;
 }

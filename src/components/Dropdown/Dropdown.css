@@ -4,6 +4,11 @@
   text-align: left;
 }
 
+.dropdown-wrapper {
+  display: flex;
+  text-align: left;
+}
+
 .dropdown-select {
   padding: 0 5px;
 }
