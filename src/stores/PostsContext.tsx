@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { postsByWeek } from "../utils/time";
 import { buildTree } from "../utils/buildTree";
+import { Post, TreeNode } from "../types";
 
 export enum ActionTypes {
   SET_POSTS = "SET_POSTS",
@@ -12,7 +13,7 @@ export const StoreContext = createContext<any | undefined>(undefined);
 
 type StoreState = {
   posts: [];
-  postsByGroup: { [key: string]: any[] };
+  postsByGroup: { [key: string]: TreeNode[] };
   selectedGroup: string;
 };
 
@@ -22,7 +23,7 @@ type ActionType = {
 };
 
 type PostsContextProviderProps = {
-  posts: any;
+  posts: Post[];
   children: React.ReactNode;
 };
 
@@ -72,7 +73,7 @@ const defaultStoreState: StoreState = {
 type ContextStore = {
   state: StoreState;
   actions: {
-    setPosts: (posts: any[]) => void;
+    setPosts: (posts: Post[]) => void;
     setPostsByGroup: (groupKey: string) => void;
     setSelectedGroup: (group: string) => void;
   };

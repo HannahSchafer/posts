@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FiEdit3, FiSave } from "react-icons/fi";
 import "./EditableText.css";
 
@@ -17,12 +17,10 @@ const EditableText = ({ text }: EditableTextProps) => {
 
   const handleSaveClick = () => {
     setIsEditing(false);
-    // You can perform some action with the edited text here, e.g., update it in your state or send it to an API.
-    console.log("Saved:", editedText);
     setText(editedText);
   };
 
-  const handleInputChange = (e: any) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEditedText(e.target.value);
   };
 

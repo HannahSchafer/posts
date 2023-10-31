@@ -12,7 +12,7 @@ function Tabs() {
     state: { postsByGroup, selectedGroup },
     actions: { setSelectedGroup },
   } = useStoreContext();
-  const handleSelect = (selectedOpt: any) => {
+  const handleSelect = (selectedOpt: string) => {
     setSelectedGroup(selectedOpt);
   };
   return (
