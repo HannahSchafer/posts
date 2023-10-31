@@ -1,3 +1,27 @@
+import { Post } from "../types";
+
+type PostsByWeek = {
+  [key: number]: Post[];
+};
+
+export const postsByWeek = (posts: Post[]) => {
+  const postsGroupedByWeekNumber = postsByWeekNumber(posts);
+  return formattedPostsByWeek(postsGroupedByWeekNumber);
+};
+
+export const postsByWeekNumber = (posts: Post[]) => {
+  const res = posts.reduce((acc: PostsByWeek, post: Post) => {
+    const postDate: Date = new Date(post.time * 1000); // Convert timestamp to milliseconds
+    const weekNumber: number = getWeekNumber(postDate); // Function to get week number
+    if (!acc[weekNumber]) {
+      acc[weekNumber] = [];
+    }
+    acc[weekNumber].push(post);
+    return acc;
+  }, {});
+  return res;
+};
+
 function getWeekNumber(date: Date): number {
   // Function to get the week number of a date
   const d = new Date(date);
@@ -10,23 +34,10 @@ function getWeekNumber(date: Date): number {
   return weekNumber;
 }
 
-export const postsByWeekNumber = (posts: any) => {
-  const res = posts.reduce((acc: any, post: any) => {
-    const postDate: Date = new Date(post.time * 1000); // Convert timestamp to milliseconds
-    const weekNumber: number = getWeekNumber(postDate); // Function to get week number
-    if (!acc[weekNumber]) {
-      acc[weekNumber] = [];
-    }
-    acc[weekNumber].push(post);
-    return acc;
-  }, {});
-  return res;
-};
-
-export const formattedPostsByWeek = (postsByWeek: any) => {
+const formattedPostsByWeek = (postsByWeek: PostsByWeek) => {
   const res = Object.entries(postsByWeek).map(([week, weekPosts]) => {
-    const startDate = getStartDate(week as any);
-    const endDate = getEndDate(week as any);
+    const startDate = getStartDate(Number(week));
+    const endDate = getEndDate(Number(week));
     const dateLabel = createWeekLabel(startDate, endDate);
     return {
       label: dateLabel,
@@ -36,12 +47,7 @@ export const formattedPostsByWeek = (postsByWeek: any) => {
   return res;
 };
 
-export const postsByWeek = (posts: any) => {
-  const postsGroupedByWeekNumber = postsByWeekNumber(posts);
-  return formattedPostsByWeek(postsGroupedByWeekNumber);
-};
-
-const createWeekLabel = (startDate: any, endDate: any) => {
+const createWeekLabel = (startDate: Date, endDate: Date) => {
   return `${startDate.toDateString()} - ${endDate.toDateString()}`;
 };
 
