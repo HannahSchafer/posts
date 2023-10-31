@@ -1,6 +1,7 @@
 import React from "react";
 import TreeView from "./views/TreeView";
 import Loader from "./components/Loader/Loader";
+import Error from "./components/Error/Error";
 
 import "./App.css";
 
@@ -14,6 +15,7 @@ function App() {
     <div className="App">
       <PostsContextProvider posts={posts}>
         {isLoading ? <Loader /> : <TreeView />}
+        {error && <Error type="posts" />}
       </PostsContextProvider>
     </div>
   );
