@@ -1,6 +1,7 @@
 import { useState } from "react";
 import moment from "moment";
 import { Post } from "../../types";
+import EditableText from "../EditableText/EditableText";
 import "./TreeNode.css";
 
 interface TreeNode {
@@ -21,14 +22,13 @@ function TreeNode({ node }: TreeNode) {
       <div className="tree-node-post">
         <div className="tree-node-post-header">
           <div className="tree-node-post-subheader">
-            <div className="tree-node-editable">{author}</div>
+            <EditableText text={author} />
             <div>{dateString}</div>
           </div>
         </div>
         <div className="tree-node-post-text">{text}</div>
-        <div className=" tree-node-editable tree-node-post-location">
-          {location}
-        </div>
+
+        <EditableText text={location} />
       </div>
     </div>
   );
