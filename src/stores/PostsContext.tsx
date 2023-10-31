@@ -119,6 +119,7 @@ export function PostsContextProvider({
       },
       setSelectedGroup: (group) => {
         if (!(group in state.postsByGroup)) {
+          console.log("setting group: ", group);
           store.actions.setPostsByGroup(group);
         }
         dispatch({

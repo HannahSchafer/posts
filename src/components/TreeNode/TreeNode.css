@@ -1,23 +1,40 @@
 .tree-node-post {
+  background-color: white;
   border: 1px solid lightgray;
   border-radius: 10px;
   font-size: 12px;
-  height: 80px;
+  max-height: 80px;
   margin: 10px;
+  overflow: auto;
+  overflow-wrap: break-word;
   padding: 10px;
   text-align: left;
 }
 
-.tree-node-post:hover {
-  background-color: #f5f5f5;
+.tree-node-editable {
+  padding: 2px;
+}
+
+.tree-node-editable:hover {
+  background-color: #f9f0ff;
   cursor: pointer;
 }
 
 .tree-node-post-header {
+  font-weight: 600;
   padding-bottom: 8px;
 }
 
 .tree-node-post-subheader {
   display: flex;
   justify-content: space-between;
+}
+
+.tree-node-post-text {
+  padding-bottom: 8px;
+}
+
+.tree-node-post-location {
+  font-weight: 600;
+  width: fit-content;
 }

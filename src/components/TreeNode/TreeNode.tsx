@@ -21,12 +21,14 @@ function TreeNode({ node }: TreeNode) {
       <div className="tree-node-post">
         <div className="tree-node-post-header">
           <div className="tree-node-post-subheader">
+            <div className="tree-node-editable">{author}</div>
             <div>{dateString}</div>
-            <div>{author}</div>
           </div>
-          <div>{location}</div>
         </div>
-        <div>{text}</div>
+        <div className="tree-node-post-text">{text}</div>
+        <div className=" tree-node-editable tree-node-post-location">
+          {location}
+        </div>
       </div>
     </div>
   );
