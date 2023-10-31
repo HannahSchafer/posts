@@ -29,7 +29,7 @@ function getWeekNumber(date: Date): number {
   d.setDate(d.getDate() + 4 - (d.getDay() || 7));
   const yearStart: Date = new Date(d.getFullYear(), 0, 1);
   const weekNumber = Math.ceil(
-    ((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7
+    ((d.getTime() - yearStart.getTime()) / 86400000 + 1) / 7,
   );
   return weekNumber;
 }

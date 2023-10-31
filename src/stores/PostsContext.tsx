@@ -141,7 +141,7 @@ export function useStoreContext(): ContextStore {
 
   if (context === undefined) {
     console.warn(
-      "useStorecontext has to be used within the StoreContextProvider"
+      "useStorecontext has to be used within the StoreContextProvider",
     );
   }
 

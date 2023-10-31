@@ -1,10 +1,8 @@
-import { useState } from "react";
-import { Post, GroupedTreeNodes, TreeGroupKey } from "../types";
 import { useStoreContext } from "../stores/PostsContext";
-import { buildTree } from "../utils/buildTree";
-import "./TreeView.css";
 import Tree from "../components/Tree/Tree";
 import Tabs from "../components/Tabs/Tabs";
+
+import "./TreeView.css";
 
 function TreeView() {
   const {
