@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { FiEdit3, FiSave } from "react-icons/fi";
 
 import "./EditableText.css";

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import moment from "moment";
 import { Post } from "../../types";
 import EditableText from "../EditableText/EditableText";
@@ -10,13 +10,9 @@ interface TreeNode {
 
 function TreeNode({ node }: TreeNode) {
   const { location, author, time, text } = node;
-  const [showChildren, setShowChildren] = useState(false);
 
   const dateString = moment.unix(time).format("LL");
 
-  const handleClick = () => {
-    setShowChildren(!showChildren);
-  };
   return (
     <div className="tree-node-wrapper">
       <div className="tree-node-post">

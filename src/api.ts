@@ -1,9 +1,9 @@
-import { PostsResponse, Post } from "./types";
+import { Post } from "./types";
 
 const BASE_URL = "http://localhost:3004";
 
-async function makeRequest(path: string, queryString?: string) {
-  let url = `${BASE_URL}${path}`;
+async function makeRequest(path: string) {
+  const url = `${BASE_URL}${path}`;
   try {
     const response = await fetch(url);
     const body = await response.json();

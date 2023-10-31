@@ -9,6 +9,7 @@ export enum ActionTypes {
   SET_SELECTED_GROUP = "SET_SELECTED_GROUP",
 }
 
+// eslint-disable-next-line
 export const StoreContext = createContext<any | undefined>(undefined);
 
 type StoreState = {
@@ -19,7 +20,8 @@ type StoreState = {
 
 type ActionType = {
   type: ActionTypes;
-  payload?: any;
+  // eslint-disable-next-line
+  payload: any;
 };
 
 type PostsContextProviderProps = {
@@ -141,7 +143,7 @@ export function useStoreContext(): ContextStore {
 
   if (context === undefined) {
     console.warn(
-      "useStorecontext has to be used within the StoreContextProvider",
+      "useStorecontext has to be used within the StoreContextProvider"
     );
   }
 

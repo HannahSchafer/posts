@@ -1,3 +1,4 @@
+import React from "react";
 import { useStoreContext } from "../../stores/PostsContext";
 import { GROUP_BY_OPTS } from "../../constants";
 

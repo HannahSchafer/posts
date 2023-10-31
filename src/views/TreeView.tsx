@@ -1,3 +1,4 @@
+import React from "react";
 import { useStoreContext } from "../stores/PostsContext";
 import Tree from "../components/Tree/Tree";
 import Tabs from "../components/Tabs/Tabs";

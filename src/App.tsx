@@ -1,3 +1,4 @@
+import React from "react";
 import TreeView from "./views/TreeView";
 import Loader from "./components/Loader/Loader";
 
