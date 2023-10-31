@@ -1,4 +1,5 @@
 import { GROUP_BY_OPTS } from "../../constants";
+import { useStoreContext } from "../../stores/PostsContext";
 import "./Tabs.css";
 
 interface TabsProps {
@@ -6,7 +7,11 @@ interface TabsProps {
   setSelectedGroup: (group: string) => void;
 }
 
-function Tabs({ selectedGroup, setSelectedGroup }: TabsProps) {
+function Tabs() {
+  const {
+    state: { postsByGroup, selectedGroup },
+    actions: { setSelectedGroup },
+  } = useStoreContext();
   const handleSelect = (selectedOpt: any) => {
     setSelectedGroup(selectedOpt);
   };

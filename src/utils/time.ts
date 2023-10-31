@@ -10,9 +10,8 @@ function getWeekNumber(date: Date): number {
   return weekNumber;
 }
 
-export const postsByWeek = (posts: any) => {
-  posts.reduce((acc: any, post: any) => {
-    console.log("acc", acc);
+export const postsByWeekNumber = (posts: any) => {
+  const res = posts.reduce((acc: any, post: any) => {
     const postDate: Date = new Date(post.time * 1000); // Convert timestamp to milliseconds
     const weekNumber: number = getWeekNumber(postDate); // Function to get week number
     if (!acc[weekNumber]) {
@@ -21,18 +20,30 @@ export const postsByWeek = (posts: any) => {
     acc[weekNumber].push(post);
     return acc;
   }, {});
+  return res;
 };
 
-// export const organizedPosts = Object.entries(postsByWeek).map(([week, weekPosts]) => {
-//   const startDate = getStartDate(week as any);
-//   const endDate = getEndDate(week as any);
-//   return {
-//     week,
-//     startDate,
-//     endDate,
-//     posts: weekPosts,
-//   };
-// });
+export const formattedPostsByWeek = (postsByWeek: any) => {
+  const res = Object.entries(postsByWeek).map(([week, weekPosts]) => {
+    const startDate = getStartDate(week as any);
+    const endDate = getEndDate(week as any);
+    const dateLabel = createWeekLabel(startDate, endDate);
+    return {
+      label: dateLabel,
+      children: weekPosts,
+    };
+  });
+  return res;
+};
+
+export const postsByWeek = (posts: any) => {
+  const postsGroupedByWeekNumber = postsByWeekNumber(posts);
+  return formattedPostsByWeek(postsGroupedByWeekNumber);
+};
+
+const createWeekLabel = (startDate: any, endDate: any) => {
+  return `${startDate.toDateString()} - ${endDate.toDateString()}`;
+};
 
 function getStartDate(weekNumber: number) {
   // Function to calculate the start date of a week

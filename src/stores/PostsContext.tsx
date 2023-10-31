@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useEffect, useReducer } from "react";
+import { postsByWeek } from "../utils/time";
+import { buildTree } from "../utils/buildTree";
 
 export enum ActionTypes {
   SET_POSTS = "SET_POSTS",
@@ -10,8 +12,8 @@ export const StoreContext = createContext<any | undefined>(undefined);
 
 type StoreState = {
   posts: [];
-  postsByGroup: {};
-  selectedGroup: "";
+  postsByGroup: { [key: string]: any[] };
+  selectedGroup: string;
 };
 
 type ActionType = {
@@ -35,13 +37,24 @@ const reducer = (state: StoreState, action: ActionType): StoreState => {
     case ActionTypes.SET_SELECTED_GROUP: {
       return {
         ...state,
-        posts: action.payload,
+        selectedGroup: action.payload,
       };
     }
     case ActionTypes.SET_POSTS_BY_GROUP: {
+      let postsValue = [];
+      if (action.payload.group === "week") {
+        postsValue = postsByWeek(action.payload.posts);
+      } else {
+        postsValue = buildTree(action.payload.posts, action.payload.group);
+      }
+
+      const updatedPostsByGroup = {
+        ...state.postsByGroup,
+        [action.payload.group]: postsValue,
+      };
       return {
         ...state,
-        posts: action.payload,
+        postsByGroup: updatedPostsByGroup,
       };
     }
     default:
@@ -53,7 +66,7 @@ const reducer = (state: StoreState, action: ActionType): StoreState => {
 const defaultStoreState: StoreState = {
   posts: [],
   postsByGroup: {},
-  selectedGroup: "",
+  selectedGroup: "week",
 };
 
 type ContextStore = {
@@ -70,19 +83,18 @@ export function PostsContextProvider({
   children,
 }: PostsContextProviderProps) {
   const [state, dispatch] = useReducer(reducer, defaultStoreState);
-
   useEffect(() => {
     dispatch({
       type: ActionTypes.SET_POSTS,
-      payload: state.posts,
+      payload: posts,
     });
     dispatch({
       type: ActionTypes.SET_POSTS_BY_GROUP,
-      payload: "location",
+      payload: { group: "week", posts: posts },
     });
     dispatch({
       type: ActionTypes.SET_SELECTED_GROUP,
-      payload: "location",
+      payload: "week",
     });
   }, [posts]);
 
@@ -99,16 +111,19 @@ export function PostsContextProvider({
           payload: posts,
         });
       },
-      setPostsByGroup: (posts) => {
+      setPostsByGroup: (group) => {
         dispatch({
           type: ActionTypes.SET_POSTS_BY_GROUP,
-          payload: posts,
+          payload: { group: group, posts: store.state.posts },
         });
       },
-      setSelectedGroup: (posts) => {
+      setSelectedGroup: (group) => {
+        if (!(group in state.postsByGroup)) {
+          store.actions.setPostsByGroup(group);
+        }
         dispatch({
           type: ActionTypes.SET_SELECTED_GROUP,
-          payload: posts,
+          payload: group,
         });
       },
     },
