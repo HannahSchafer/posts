@@ -1,11 +1,12 @@
 import { useState } from "react";
 import TreeNode from "../TreeNode/TreeNode";
-import { Post, TreeSortKey } from "../../types";
+import { Post, TreeGroupKey } from "../../types";
+
 import "./Tree.css";
 
 interface TreeProps {
   treeData: Post[];
-  label: TreeSortKey;
+  label: TreeGroupKey;
 }
 
 function Tree({ treeData, label }: TreeProps) {
@@ -19,16 +20,16 @@ function Tree({ treeData, label }: TreeProps) {
   };
 
   return (
-    <div className="tree-container">
+    <div className="tree-wrapper">
       <button
-        className="accordion-button"
+        className="tree-accordion-button"
         onClick={() => {
           toggleNode();
         }}
       >
         {label}
       </button>
-      <div className={`accordion-content ${isOpen ? "active" : ""}`}>
+      <div className={`tree-accordion-content ${isOpen ? "active" : ""}`}>
         {treeData.map((node: Post) => (
           <TreeNode node={node} key={node.id} />
         ))}

@@ -16,9 +16,3 @@ async function makeRequest(path: string, queryString?: string) {
 }
 
 export const getPosts = (): Promise<Post[]> => makeRequest(`/posts`);
-
-// export const getMovieDetails = (movie_id: number): Promise<MovieDetail> =>
-//   makeRequest(`/movie/${movie_id}`);
-
-// export const getSearchMovie = (params: string): Promise<Movies> =>
-//   makeRequest("/search/movie", params);

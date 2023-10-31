@@ -10,15 +10,15 @@ interface TreeNode {
 
 function TreeNode({ node }: TreeNode) {
   const { location, author, time, text } = node;
-  let dateString = moment.unix(time).format("LL");
-
   const [showChildren, setShowChildren] = useState(false);
+
+  const dateString = moment.unix(time).format("LL");
 
   const handleClick = () => {
     setShowChildren(!showChildren);
   };
   return (
-    <div className="tree-node-container">
+    <div className="tree-node-wrapper">
       <div className="tree-node-post">
         <div className="tree-node-post-header">
           <div className="tree-node-post-subheader">
@@ -27,7 +27,6 @@ function TreeNode({ node }: TreeNode) {
           </div>
         </div>
         <div className="tree-node-post-text">{text}</div>
-
         <EditableText text={location} />
       </div>
     </div>

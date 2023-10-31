@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FiEdit3, FiSave } from "react-icons/fi";
+
 import "./EditableText.css";
 
 interface EditableTextProps {
@@ -27,16 +28,16 @@ const EditableText = ({ text }: EditableTextProps) => {
   return (
     <div>
       {isEditing ? (
-        <div className="text-container">
+        <div className="text-wrapper">
           <input type="text" value={editedText} onChange={handleInputChange} />
-          <FiSave className="editable-text-icon" onClick={handleSaveClick}>
+          <FiSave className="text-icon" onClick={handleSaveClick}>
             Save
           </FiSave>
         </div>
       ) : (
-        <div className="text-container">
+        <div className="text-wrapper">
           <div className="text">{displayedText}</div>
-          <FiEdit3 className="editable-text-icon" onClick={handleEditClick}>
+          <FiEdit3 className="text-icon" onClick={handleEditClick}>
             Edit
           </FiEdit3>
         </div>

@@ -1,9 +1,9 @@
-import { Post, GroupedTreeNodes, TreeSortKey } from "../types";
+import { Post, GroupedTreeNodes, TreeGroupKey } from "../types";
 
 export const buildTree = (arr: Post[], key: string) => {
   const treeNodes: GroupedTreeNodes = {};
   arr.forEach((item: Post) => {
-    const selectedKey: TreeSortKey = item[key as keyof Post];
+    const selectedKey: TreeGroupKey = item[key as keyof Post];
     if (treeNodes[selectedKey]) {
       treeNodes[selectedKey].children.push(item);
     } else {

@@ -1,20 +1,18 @@
-import { GROUP_BY_OPTS } from "../../constants";
 import { useStoreContext } from "../../stores/PostsContext";
-import "./Tabs.css";
+import { GROUP_BY_OPTS } from "../../constants";
 
-interface TabsProps {
-  selectedGroup: string;
-  setSelectedGroup: (group: string) => void;
-}
+import "./Tabs.css";
 
 function Tabs() {
   const {
-    state: { postsByGroup, selectedGroup },
+    state: { selectedGroup },
     actions: { setSelectedGroup },
   } = useStoreContext();
+
   const handleSelect = (selectedOpt: string) => {
     setSelectedGroup(selectedOpt);
   };
+
   return (
     <div className="tabs-wrapper">
       <div>Group by: </div>

@@ -11,7 +11,7 @@ export type PostsResponse = {
 };
 
 export type TreeNode = {
-  label: TreeSortKey;
+  label: TreeGroupKey;
   children: Post[];
 };
 
@@ -19,4 +19,4 @@ export type GroupedTreeNodes = {
   [key: string]: TreeNode;
 };
 
-export type TreeSortKey = string | number;
+export type TreeGroupKey = string | number;

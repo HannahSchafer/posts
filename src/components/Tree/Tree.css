@@ -3,7 +3,7 @@
   transition: max-height 0.2s ease-out;
 }
 
-.accordion-button {
+.tree-accordion-button {
   width: 100%;
   padding: 10px 15px;
   cursor: pointer;
@@ -16,12 +16,12 @@
   background-color: #f3dfff;
 }
 
-.accordion-button:hover {
+.tree-accordion-button:hover {
   background-color: #9236cd;
   color: white;
 }
 
-.accordion-content {
+.tree-accordion-content {
   max-height: 0;
   overflow: auto;
   transition: max-height 0.2s ease-out;
@@ -29,6 +29,6 @@
   padding: 0;
 }
 
-.accordion-content.active {
+.tree-accordion-content.active {
   max-height: 300px;
 }

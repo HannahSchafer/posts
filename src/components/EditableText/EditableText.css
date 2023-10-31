@@ -1,14 +1,14 @@
-.editable-text-icon:hover {
-  background-color: #f9f0ff;
-  cursor: pointer;
+.text-wrapper {
+  align-items: center;
+  display: flex;
 }
 
-.editable-text-icon {
+.text-icon {
   padding: 2px;
   margin: 0 4px;
 }
 
-.text-container {
-  align-items: center;
-  display: flex;
+.text-icon:hover {
+  background-color: #f9f0ff;
+  cursor: pointer;
 }
